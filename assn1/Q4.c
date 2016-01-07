@@ -57,7 +57,7 @@ int main(){
 
     /*Print the contents of the array of n students.*/
     for (i = 0; i != n; ++i)
-        printf("ID %2d score %3d\n", students[i].id, students[i].score);
+        printf("ID%d score%d\n", students[i].id, students[i].score);
     printf("\n");
 
     /*Pass this array along with n to the sort() function*/
@@ -65,7 +65,7 @@ int main(){
 
     /*Print the contents of the array of n students.*/
     for (i = 0; i != n; ++i)
-        printf("ID %2d score %3d\n", students[i].id, students[i].score);
+        printf("ID%d score%d\n", students[i].id, students[i].score);
     printf("\n");
 
     return 0;
