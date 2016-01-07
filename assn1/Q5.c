@@ -36,7 +36,7 @@ int main(){
     char str[100];
 
     /*Read word from the keyboard using scanf*/
-    printf("Enter a word: ");
+    //printf("Enter a word: ");
     scanf("%s", str);
     
     /*Call studly*/
