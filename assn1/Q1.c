@@ -59,7 +59,7 @@ void output(struct student* students){
               ...
               ID10 score10*/
     for (i = 0; i != NUM_STUDENTS; ++i)
-        printf("ID %2d score %3d\n", students[i].id, students[i].score);
+        printf("ID%d score%d\n", students[i].id, students[i].score);
     printf("\n");
 
 }
@@ -81,9 +81,9 @@ void summary(struct student* students){
          total += students[i].score;
      }
 
-     printf("min score: %d\n", min);
-     printf("max score: %d\n", max);
-     printf("avg score: %.2lf\n", total / (double) NUM_STUDENTS);
+     printf("%d\n", min);
+     printf("%d\n", max);
+     printf("%lf\n", total / (double) NUM_STUDENTS);
 }
 
 void deallocate(struct student* stud){
