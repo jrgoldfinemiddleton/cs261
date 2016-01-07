@@ -29,18 +29,18 @@ int main(){
     int z = 9;
     
     /*Print the values of x, y and z*/
-    printf("x = %d\n", x);
-    printf("y = %d\n", y);
-    printf("z = %d\n", z);
+    printf("%d\n", x);
+    printf("%d\n", y);
+    printf("%d\n", z);
     
     /*Call foo() appropriately, passing x,y,z as parameters*/
     /*Print the value returned by foo*/
-    printf("foo(&x, &y, z) = %d\n", foo(&x, &y, z));
+    printf("%d\n", foo(&x, &y, z));
     
     /*Print the values of x, y and z again*/
-    printf("x = %d\n", x);
-    printf("y = %d\n", y);
-    printf("z = %d\n", z);
+    printf("%d\n", x);
+    printf("%d\n", y);
+    printf("%d\n", z);
 
     /*Is the return value different than the value of z?  Why?*/
 
@@ -51,5 +51,3 @@ int main(){
 
     return 0;
 }
-    
-    
