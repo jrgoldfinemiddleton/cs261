@@ -38,26 +38,31 @@ int isBalanced(char* s)
 
     pStack = newDynArr(initCap);
 
+    /* loop through string */
     for (; *s; ++s) {
         if (*s == '(' || *s == '{' || *s == '[')
+            /* add opening parens to stack */
             pushDynArr(pStack, *s);
         else if ((*s == ')' && (isEmptyDynArr(pStack) || topDynArr(pStack) != '(')) ||
                  (*s == '}' && (isEmptyDynArr(pStack) || topDynArr(pStack) != '{')) ||
                  (*s == ']' && (isEmptyDynArr(pStack) || topDynArr(pStack) != '['))) {
+            /* no matching opening parenthesis */
             deleteDynArr(pStack);
-            pStack = NULL;
             return 0;
         }
         else if (*s == ')' || (*s == '}') || (*s == ']'))
+            /* matching opening parenthesis */
             popDynArr(pStack);
     }
 
-    if (!isEmptyDynArr(pStack))
+    if (!isEmptyDynArr(pStack)) {
+        /* more opening parens than closing */
+        deleteDynArr(pStack);
         return 0;
+    }
 
+    /* all open parens matched closing parens in balanced order */
     deleteDynArr(pStack);
-    pStack = NULL;
-
     return 1;
 }
 
