@@ -65,7 +65,7 @@ a sequence of N push() and pop() operations which will result in poor performanc
 Oscillate between pushing and popping starting with initial size of array N/2:
 push, pop, push, pop, push, pop... total of N ops
 Since both shrinking and growing the array have a cost of N units, the total cost
-would be N * N units = O(n)
+would be N * N units = O(N^2)
 
 Note: This dilemma could be solved by shrinking the array by a factor of 1/2
 whenever the array is 1/4 full (assuming the array has at least 1 element).
