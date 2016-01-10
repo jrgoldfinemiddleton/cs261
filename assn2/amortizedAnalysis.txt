@@ -53,7 +53,7 @@ resizing, what is the big-oh complexity for a push?
 Total:  12 + 8 + 9 + 11 + 13 + 15 + 17 + 19 + 21 + 23 + 25 + 27 + 29 + 31
       = 260 units
 
-Rough cost of n/2 units per push operation = O(n)
+Rough cost of N/2 units per push operation = O(N)
 
 
 3. Suppose that a dynamic array stack doubles its capacity when it is full, and shrinks
