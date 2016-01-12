@@ -31,7 +31,10 @@ char nextChar(char* s)
 */
 int isBalanced(char* s)
 {
+	/* FIXME: You will write this function */		
+
     int initCap = 10;
+    char c;
     DynArr *pStack;
 
     /* assert(s != NULL); */
@@ -39,18 +42,18 @@ int isBalanced(char* s)
     pStack = newDynArr(initCap);
 
     /* loop through string */
-    for (; *s; ++s) {
-        if (*s == '(' || *s == '{' || *s == '[')
+    for (c = nextChar(s); c ; c = nextChar(s)) {
+        if (c == '(' || c == '{' || c == '[')
             /* add opening parens to stack */
-            pushDynArr(pStack, *s);
-        else if ((*s == ')' && (isEmptyDynArr(pStack) || topDynArr(pStack) != '(')) ||
-                 (*s == '}' && (isEmptyDynArr(pStack) || topDynArr(pStack) != '{')) ||
-                 (*s == ']' && (isEmptyDynArr(pStack) || topDynArr(pStack) != '['))) {
+            pushDynArr(pStack, c);
+        else if ((c == ')' && (isEmptyDynArr(pStack) || topDynArr(pStack) != '(')) ||
+                 (c == '}' && (isEmptyDynArr(pStack) || topDynArr(pStack) != '{')) ||
+                 (c == ']' && (isEmptyDynArr(pStack) || topDynArr(pStack) != '['))) {
             /* no matching opening parenthesis */
             deleteDynArr(pStack);
             return 0;
         }
-        else if (*s == ')' || (*s == '}') || (*s == ']'))
+        else if (c == ')' || (c == '}') || (c == ']'))
             /* matching opening parenthesis */
             popDynArr(pStack);
     }
