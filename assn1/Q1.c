@@ -25,27 +25,31 @@ struct student* allocate(){
 }
 
 void generate(struct student* students){
-    int id;     /* new ID number */
-    int flag;   /* unique ID? */
-    int i, j;
+    int tmpScr;
+    int tmpId;
+    int swapIndex;
+    int i;
 
     /*Generate random ID and scores for 10 students, ID being between 1 and 10, scores between 0 and 100*/
+
+    /* Allocate IDs in order and determine scores */
     for (i = 0; i != NUM_STUDENTS; ++i) {
-        id = rand() % NUM_STUDENTS + 1;
+        students[i].id = i + 1;
         students[i].score = rand() % 101;
+    }
 
-        flag = 1;
+    /* Shuffle the students around */
+    for (i = 0; i != NUM_STUDENTS; ++i) {
+        swapIndex = rand() % (i + 1);
 
-        /* see if ID already taken */
-        for (j = 0; j != i && flag; ++j)
-            if (students[j].id == id)
-                flag = 0;
-
-        /* if not taken, assign ID to current student */
-        if (flag)
-            students[i].id = id;
-        else
-            --i;
+        /* Swap the student at index i with student at
+           position swapIndex */
+        tmpId = students[i].id;
+        tmpScr = students[i].score;
+        students[i].id = students[swapIndex].id;
+        students[i].score = students[swapIndex].score;
+        students[swapIndex].id = tmpId;
+        students[swapIndex].score = tmpScr;
     }
 }
 
@@ -96,7 +100,7 @@ int main(){
     struct student* stud = NULL;
 
     /*seed rng
-    srand((unsigned int) time(0));*/
+    srand((unsigned int) time(0)); */
 
     /*call allocate*/
     stud = allocate();

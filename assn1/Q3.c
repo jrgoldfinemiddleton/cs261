@@ -46,7 +46,7 @@ int main(){
     
     /*Print the contents of the array.*/
     for (i = 0; i != n; ++i)
-        printf("%d ", nums[i]);
+        printf("%d\n", nums[i]);
     printf("\n");
 
     /*Pass this array along with n to the sort() function.*/
@@ -54,7 +54,7 @@ int main(){
     
     /*Print the contents of the array.*/    
     for (i = 0; i != n; ++i)
-        printf("%d ", nums[i]);
+        printf("%d\n", nums[i]);
     printf("\n");
 
     free(nums);
