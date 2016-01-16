@@ -32,10 +32,12 @@ void generate(struct student* students){
     /*Generate random ID and scores for 10 students, ID being between 1 and 10, scores between 0 and 100*/
     for (i = 0; i != NUM_STUDENTS; ++i) {
         id = rand() % NUM_STUDENTS + 1;
+        students[i].score = rand() % 101;
 
         flag = 1;
+
+        /* see if ID already taken */
         for (j = 0; j != i && flag; ++j)
-            /* see if ID already taken */
             if (students[j].id == id)
                 flag = 0;
 
@@ -44,8 +46,6 @@ void generate(struct student* students){
             students[i].id = id;
         else
             --i;
-
-        students[i].score = rand() % 101;
     }
 }
 
