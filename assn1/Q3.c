@@ -56,6 +56,8 @@ int main(){
     for (i = 0; i != n; ++i)
         printf("%d ", nums[i]);
     printf("\n");
+
+    free(nums);
     
     return 0;
 }

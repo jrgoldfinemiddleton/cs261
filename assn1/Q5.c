@@ -33,10 +33,10 @@ void studly(char* word){
 }
 
 int main(){
-    char str[100];
+    char str[1000];
 
     /*Read word from the keyboard using scanf*/
-    //printf("Enter a word: ");
+    printf("Enter a word: ");
     scanf("%s", str);
     
     /*Call studly*/

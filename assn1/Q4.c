@@ -68,5 +68,7 @@ int main(){
         printf("ID%d score%d\n", students[i].id, students[i].score);
     printf("\n");
 
+    free(students);
+
     return 0;
 }
