@@ -15,27 +15,27 @@ struct student{
 
 /* Private function to generate scores and unique IDs for students */
 void generate(struct student* students, int num_students){
-    int id;     /* new ID number */
-    int flag;   /* unique ID? */
-    int i, j;
+    int tmpId;
+    int swapIndex;
+    int i;
 
     /*Generate random ID and scores for 10 students, ID being between 1 and 10, scores between 0 and 100*/
+
+    /* Allocate IDs in order and determine scores */
     for (i = 0; i != num_students; ++i) {
-        id = rand() % num_students + 1;
+        students[i].id = i + 1;
         students[i].score = rand() % 101;
+    }
 
-        flag = 1;
+    /* Shuffle the IDs around */
+    for (i = 0; i != num_students; ++i) {
+        swapIndex = rand() % (i + 1);
 
-        /* see if ID already taken */
-        for (j = 0; j != i && flag; ++j)
-            if (students[j].id == id)
-                flag = 0;
-
-        /* if not taken, assign ID to current student */
-        if (flag)
-            students[i].id = id;
-        else
-            --i;
+        /* Swap the student ID at index i with student ID at
+           position swapIndex */
+        tmpId = students[i].id;
+        students[i].id = students[swapIndex].id;
+        students[swapIndex].id = tmpId;
     }
 }
 
