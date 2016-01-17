@@ -25,7 +25,6 @@ struct student* allocate(){
 }
 
 void generate(struct student* students){
-    int tmpScr;
     int tmpId;
     int swapIndex;
     int i;
@@ -38,18 +37,15 @@ void generate(struct student* students){
         students[i].score = rand() % 101;
     }
 
-    /* Shuffle the students around */
+    /* Shuffle the IDs around */
     for (i = 0; i != NUM_STUDENTS; ++i) {
         swapIndex = rand() % (i + 1);
 
-        /* Swap the student at index i with student at
+        /* Swap the student ID at index i with student ID at
            position swapIndex */
         tmpId = students[i].id;
-        tmpScr = students[i].score;
         students[i].id = students[swapIndex].id;
-        students[i].score = students[swapIndex].score;
         students[swapIndex].id = tmpId;
-        students[swapIndex].score = tmpScr;
     }
 }
 
