@@ -37,8 +37,6 @@ int isBalanced(char* s)
     char c;
     DynArr *pStack;
 
-    /* assert(s != NULL); */
-
     pStack = newDynArr(initCap);
 
     /* loop through string */

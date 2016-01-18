@@ -7,7 +7,7 @@ struct DynArr
 {
 	TYPE *data;		/* pointer to the data array */
 	int size;		/* Number of elements in the array */
-	int capacity;	/* capacity ofthe array */
+	int capacity;	/* capacity of the array */
 };
 
 
@@ -98,12 +98,12 @@ void _dynArrSetCapacity(DynArr *v, int newCap)
     int i;
 
     assert(v != NULL);
-
     oldCap = v->capacity;
     assert(newCap >= oldCap);
 
     /* allocate new array on heap */
     newData = malloc(sizeof(TYPE) * newCap);
+    assert(newData != NULL);
 
     /* copy elements from old array to new array */
     for (i = 0; i < oldCap; ++i)
@@ -164,6 +164,7 @@ void addDynArr(DynArr *v, TYPE val)
 TYPE getDynArr(DynArr *v, int pos)
 {
 	/* FIXME: You will write this function */
+
     assert(v != NULL);
     assert(v->size > 0);
     assert(pos >= 0);
@@ -190,6 +191,7 @@ void putDynArr(DynArr *v, int pos, TYPE val)
 	/* FIXME: You will write this function */
 
     assert(v != NULL);
+    assert(v->size > 0);
     assert(pos >= 0);
     assert(pos < v->size);
 
@@ -242,6 +244,7 @@ void removeAtDynArr(DynArr *v, int idx)
     assert(v->size > 0);
     assert(idx >= 0);
     assert(idx < v->size);
+    assert(v->capacity >= 2);
 
     for (i = idx; i < v->size; ++i)
         v->data[i] = v->data[i + 1];
