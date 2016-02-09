@@ -5,7 +5,7 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
-#include "dynamicArray.h"
+#include "dynArray.h"
 
 
 void assertTrue(int predicate, char *message) 
