@@ -323,7 +323,7 @@ void printCirListDeque(struct cirListDeque *q)
         printf("%g ", cur->value); /* WARNING: not portable to other types */
         cur = cur->next;
     }
-    printf("\n\n");
+    printf("\n");
 }
 
 /* Reverse the deque

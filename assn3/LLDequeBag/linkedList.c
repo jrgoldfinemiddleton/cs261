@@ -273,7 +273,7 @@ void _printList(struct linkedList* lst)
         printf("%d ", cur->value); /* WARNING: not portable to other types */
         cur = cur->next;
     }
-    printf("\n\n");
+    printf("\n");
 }
 
 /* 
@@ -311,7 +311,7 @@ int containsList (struct linkedList *lst, TYPE e) {
 
     cur = lst->firstLink->next;
 
-    while(cur != lst->lastLink && cur->value != e)
+    while (cur != lst->lastLink && cur->value != e)
         cur = cur->next;
 
 	/*temporary return value...you may need to change this */
