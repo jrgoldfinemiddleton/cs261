@@ -128,11 +128,8 @@ int main (int argc, const char * argv[])
 
                         break;
                     }
-          case 'e': {   /* delete list and exit */
-                        deleteDynArr(mainList);
-
+          case 'e': 
                         break;
-                    }
           default:      /* invalid selection */
                     printf("\nWhat?? That's not a choice!\n\n");
                     break;
