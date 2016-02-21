@@ -49,12 +49,10 @@ int main (int argc, const char * argv[]) {
 
     /* run loop until EOF reached */
     char *word = getWord(fileptr);
-    int *occurrences;
     while (word) {
-        printf("%s\n", word);
         /* if word in hash table, increment occurrence count */
-        if ((occurrences = atMap(hashTable, word)) != NULL)
-            insertMap(hashTable, word, *occurrences + 1);
+        if (containsKey(hashTable, word))
+            ++(*atMap(hashTable, word));
 
         /* if word not yet in hash table, insert it with count 1 */
         else
@@ -68,9 +66,14 @@ int main (int argc, const char * argv[]) {
     fileptr = NULL;
 
     /* print words with number of occurrences */
-
-    
-
+    printf("\n\n");
+    for (int i = 0; i < capacity(hashTable); ++i) {
+        struct hashLink *cur = hashTable->table[i];
+        while (cur != NULL) {
+            printf("%s: %d\n", cur->key, cur->value);
+            cur = cur->next;
+        }
+    }
 		
     /*... concordance code ends here ...*/
 

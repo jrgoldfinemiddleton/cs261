@@ -67,9 +67,12 @@ void _freeMap (struct hashMap * ht)
 
     assert (ht != NULL);
 
+    /* traverse the buckets */
     for (i = 0; i < ht->tableSize; ++i) {
+        /* get the link in the bucket */
         curLink = ht->table[i];
 
+        /* delete each link */
         while (curLink != NULL) {
             prevLink = curLink;
             curLink = curLink->next;
@@ -77,6 +80,7 @@ void _freeMap (struct hashMap * ht)
         }
     }
 
+    /* delete the array */
     free(ht->table);
 }
 
@@ -99,22 +103,24 @@ void _setTableSize(struct hashMap * ht, int newTableSize)
     struct hashLink *curLink;
     int i;
 
-    assert(ht != NULL);
+    assert (ht != NULL);
     assert(newTableSize > ht->tableSize);
     newHt = createMap(newTableSize);
-    assert(newHt != NULL);
+    assert (newHt != NULL);
 
     for (i = 0; i < ht->tableSize; ++i) {
         curLink = ht->table[i]; 
 
-        while (curLink != 0) {
+        while (curLink != NULL) {
             insertMap(newHt, curLink->key, curLink->value);
             curLink = curLink->next;
         }
     }
 
-    deleteMap(ht);
-    ht = newHt;
+
+    _freeMap(ht);
+    ht->table = newHt->table;
+    ht->tableSize = newHt->tableSize;
 }
 
 /*
@@ -134,14 +140,12 @@ void insertMap (struct hashMap * ht, KeyType k, ValueType v)
     /*write this*/
     int hashIndex;
     struct hashLink *newLink;
-    ValueType *val;
     
     assert(ht != NULL);
 
-    if (containsKey(ht, k)) {
-        val = atMap(ht, k);
-        *val = v;
-    } else {
+    if (containsKey(ht, k))
+        *atMap(ht, k) = v;
+    else {
         hashIndex = HASH(k) % ht->tableSize;
 
         if (hashIndex < 0)
@@ -175,20 +179,19 @@ ValueType* atMap (struct hashMap * ht, KeyType k)
     int hashIndex;
     struct hashLink *curLink;
     assert (ht != NULL);
-    assert (k != NULL);
 
     hashIndex = HASH(k) % ht->tableSize;
     if (hashIndex < 0)
         hashIndex += ht->tableSize;
 
     curLink = ht->table[hashIndex];
-    if (curLink == NULL)
-        return NULL;
+    while (curLink) {
+        if (!strcmp(curLink->key, k))
+            return &(curLink->value);
 
-    while (curLink->key != k && curLink->next != NULL)
         curLink = curLink->next;
-
-    return curLink->key == k ? &(curLink->value) : NULL;
+    }
+    return NULL;
 }
 
 /*
