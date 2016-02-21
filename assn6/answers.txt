@@ -1,0 +1,9 @@
+CS 261 Assignment 6 Answers
+
+1. "dear" and "read"
+2. Collisions will be less likely, especially for short words.  This will, in turn, make the buckets have shorter link chains.
+3. No
+4. No
+5. Yes
+6. Yes, there are fewer empty buckets.  If the number of buckets is prime, the links will be more evenly distributed.  This makes adding, searching, and removing keys more efficient.
+7. The difference is quite negligible.  In all cases I tested, the runtime was 0.00000s.  I would imagine if I hadn't had a resize function there would be a noticeable degradation in efficiency for small tables.
