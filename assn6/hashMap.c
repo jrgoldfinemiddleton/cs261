@@ -186,7 +186,7 @@ ValueType* atMap (struct hashMap * ht, KeyType k)
 
     curLink = ht->table[hashIndex];
     while (curLink) {
-        if (!strcmp(curLink->key, k))
+        if (strcmp(curLink->key, k) == 0)
             return &(curLink->value);
 
         curLink = curLink->next;
@@ -216,8 +216,8 @@ void removeKey (struct hashMap * ht, KeyType k)
 {  
     /*write this*/	
     int hashIndex;
-    struct hashLink *curLink;
-    struct hashLink *prevLink;
+    struct hashLink *curLink = NULL;
+    struct hashLink *prevLink = NULL;
 
     assert (ht != NULL);
 
@@ -227,14 +227,16 @@ void removeKey (struct hashMap * ht, KeyType k)
 
     curLink = ht->table[hashIndex];
 
-    while (curLink != NULL && curLink->key != k) {
+    while (curLink != NULL && /*curLink->key != k*/(strcmp(curLink->key, k) != 0)) {
         prevLink = curLink;
         curLink = curLink->next;
     }
 
-    if (curLink != NULL && curLink->key == k) {
-        if (prevLink != curLink)
+    if (curLink != NULL && /*curLink->key == k*/ (strcmp(curLink->key, k) == 0)) {
+        if (prevLink != NULL)
             prevLink->next = curLink->next;
+        else
+            ht->table[hashIndex] = curLink->next;
 
         free(curLink);
     }
