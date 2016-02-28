@@ -1,0 +1,11 @@
+CS 261 Assignment 7 Answers
+
+1. Adjacency matrix
+2. Graphs 1,2,4,5
+3. With the current implementation of the Graph, the output would be the same.
+   If the graph were directed, there would very likely be different output.
+4. BFS is often slower but will find the shortest connection, if a connection
+   exists, with certainty.  Its memory usage could grow exponentially as well.
+   DFS is faster sometimes but if there is an infinite path, it may never find the 
+   connection between two nodes.  It's unlikely to find the shortest path.
+5. O(E), where E is the number of edges.

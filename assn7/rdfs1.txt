@@ -1,0 +1,9 @@
+*****		 This graph has 3 Vertices and 3 Edges
+A: B, C
+B: A, C
+C: B, A
+
+Computing reachability using DFS
+A to B			reachable!
+A to C			reachable!
+B to C			reachable!
