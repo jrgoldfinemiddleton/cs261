@@ -39,7 +39,7 @@ int main ()
 		{			
 			printf("%c to %c\t\t\t", g.vertexSet[i].label, g.vertexSet[j].label);
 			if(useDFS)
-				if(DFSRecursive(&g, &g.vertexSet[i], &g.vertexSet[j]))
+				if(DFS(&g, &g.vertexSet[i], &g.vertexSet[j]))
 					printf("reachable!\n");
 				else
 					printf("***UNREACHABLE***\n");
